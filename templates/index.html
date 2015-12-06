@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Guess the Lenguage</title>
-  </head>
-  <body>
-    <h1>Guess the Lenguage</h1>
+{% extends "base.html" %}
+{% block content %}
+
     <p>Think of your favorite programming Lenguage</p>
-    <p>Click <a href="#">here</a> to begin!</p>
-  </body>
-</html>
+    <p>Click <a href="{{ url_for('question', id=0) }}">here</a> to begin!</p>
+{% endblock %}
