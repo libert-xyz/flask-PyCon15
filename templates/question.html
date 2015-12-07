@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <p>Question: {{ question }}</p>
+
+    <form method="post">
+      <div class="form-group">
+        {{ form.hidden_tag() }}
+        <p>
+          {% for option in form.answer %}
+            {{ option }} {{ option.label }} <br>
+          {% endfor %}
+        </p>
+    </div>
+    {{ form.submit }}
+    </form>
+
+    <p>Click <a href="{{ url_for('index')}}">here</a> to main page</p>
+{% endblock %}
