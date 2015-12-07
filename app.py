@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect
 
 
 app = Flask(__name__)
@@ -15,8 +15,13 @@ def index():
 def guess(id):
 	return render_template('guess.html', guess=proglen[id])
 
-@app.route('/question/<int:id>')
+@app.route('/question/<int:id>', methods=['GET','POST'])
 def question(id):
+	if request.method == 'POST':
+		if request.form['answer'] == 'yes':
+			return redirect(url_for('question', id=id+1))
+		else:
+			return redirect(url_for('question', id=id))
 	return render_template('question.html', question=questions[id])
 
 
